@@ -1,0 +1,19 @@
+%% Hybrid Flowchart - Hybrid Chatbot vs ReAct Agent
+flowchart TD
+  U[User Question] --> Q{Is the question simple?}
+
+  Q -- Yes --> ChatbotPath[Chatbot Path]\n(Note: single-turn response)
+  ChatbotPath --> ChatbotResp[Generate Chatbot Response]
+  ChatbotResp --> End[End]
+
+  Q -- No --> ReActPath[ReAct Agent Path]\n(Note: multi-step reasoning & tools)
+  ReActPath --> Thought[Thought]
+  Thought --> Action[Action (call tool / search / compute)]
+  Action --> Observation[Observation (tool output)]
+  Observation --> Decision{Need another step?}
+  Decision -- Yes --> Thought
+  Decision -- No --> FinalAnswer[Compose Final Answer]
+  FinalAnswer --> End
+
+  classDef pathStyle fill:#f9f,stroke:#333,stroke-width:1px;
+  class ChatbotPath,ReActPath pathStyle;
