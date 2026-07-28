@@ -146,3 +146,21 @@ Bạn nên đăng ký khóa IELTS Intermediate trước để nâng từ 5.0 lê
 - **Mục tiêu tấn công:** Kiểm tra khả năng từ chối ngoài lề (Out-of-scope) và bẫy gọi Tool vô ích của nhóm bạn (vì trung tâm không có khóa SAT/GMAT). 
 - **Phản ứng dự kiến của Agent nhóm bạn:** Nên nhận diện ngoài phạm vi và từ chối từ đầu, hoặc gọi Tool tìm không thấy rồi xin lỗi, không được cố gắng bịa ra tên khóa học.
 - **Kết quả đánh giá thực tế trên lớp:** [Nhóm sẽ cập nhật phần này sau khi đi tấn công nhóm khác trên lớp]
+
+---
+
+## 🎁 5. BONUS: AUTONOMOUS AGENT (CẤP 4 - MEMORY)
+
+Để nâng cấp hệ thống từ cấp độ 3 (Reactive) lên cấp độ 4 (Autonomous) theo tiêu chí Bonus (+10%), nhóm đã phát triển thêm tính năng **Memory (Ghi nhớ ngữ cảnh đa lượt)**.
+
+### Triển khai (Implementation)
+- Đã bổ sung chế độ **Interactive Mode (gõ `chat`)** trong file `src/app.py`.
+- Biến `chat_memory` được truyền vào hàm `run_react_agent` để xây dựng chuỗi `memory_context`.
+- Mỗi lượt trao đổi, hệ thống sẽ chèn đoạn hội thoại (User + Agent) vào chuỗi lịch sử (giới hạn 3 lượt gần nhất để tránh tràn context window).
+- ReAct Agent từ nay không chỉ xử lý độc lập từng câu hỏi mà có thể hiểu được các đại từ nhân xưng (vd: "Vậy khóa đó giá bao nhiêu?", "đó" tham chiếu tới khóa học ở lượt trước) hoặc nhớ được thông tin người dùng cung cấp từ trước.
+
+**Kịch bản kiểm thử (Test Scenario):**
+- **User:** "Mình đang ở trình độ IELTS 4.5."
+- **Agent:** "[Tư vấn...] Bạn quan tâm đến khóa Intermediate không?"
+- **User:** "Có, vậy nó học trong bao lâu?"
+- **Agent:** (Nhớ được "nó" là khóa Intermediate) -> Gọi tool `get_course_detail["IELTS_INTER"]` và trả lời chính xác.

@@ -194,11 +194,18 @@ def run_baseline_chatbot(user_query: str, provider) -> str:
     return response
 
 
-def run_react_agent(user_query: str, provider):
-    """Dựng vòng lặp ReAct Agent động (Thought -> Action -> Observation)."""
+def run_react_agent(user_query: str, provider, memory: list = None):
+    """Dựng vòng lặp ReAct Agent động (Thought -> Action -> Observation). Có hỗ trợ Memory."""
     print(f"\n🤖 [REACT AGENT] Câu hỏi: {user_query}")
     
-    conversation_history = f"User Question: {user_query}\n"
+    memory_context = ""
+    if memory:
+        memory_context = "Lịch sử hội thoại trước đó (Memory):\n"
+        for turn in memory[-3:]: # Giữ 3 lượt gần nhất để tránh tràn context
+            memory_context += f"- User: {turn['user']}\n- Agent: {turn['agent']}\n"
+        memory_context += "\n---Kết thúc lịch sử---\n\n"
+        
+    conversation_history = memory_context + f"User Question: {user_query}\n"
     step = 0
     
     while step < MAX_ITERATIONS:
@@ -250,9 +257,28 @@ if __name__ == "__main__":
     tests = load_test_cases()
     print(f"✅ Đã tải thành công {len(tests)} Test Cases\n")
     
-    choice = input("👉 Nhập ID Test Case muốn chạy (1-16) hoặc gõ 'all' để chạy toàn bộ và tóm tắt: ").strip().lower()
+    choice = input("👉 Nhập ID Test Case (1-16), 'all' (chạy batch), hoặc 'chat' (chế độ Chat có Memory - Bonus): ").strip().lower()
     
-    if choice == 'all':
+    if choice == 'chat':
+        print("\n" + "="*50)
+        print("💬 [INTERACTIVE MODE - MEMORY ENABLED] Gõ 'exit' để thoát")
+        print("="*50)
+        chat_memory = []
+        while True:
+            user_input = input("\n🧑 Bạn: ").strip()
+            if user_input.lower() in ['exit', 'quit']:
+                break
+            if not user_input:
+                continue
+                
+            try:
+                ans = run_react_agent(user_input, provider, memory=chat_memory)
+                chat_memory.append({"user": user_input, "agent": ans})
+            except Exception as e:
+                print(f"Lỗi: {e}")
+            print("\n" + "-"*50)
+
+    elif choice == 'all':
         print("\n🚀 ĐANG CHẠY BATCH TEST TẤT CẢ CÁC KỊCH BẢN...\n")
         results = []
         for test in tests:
