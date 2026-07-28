@@ -267,7 +267,7 @@ def calculate_price(course_id: str, promo_code: str = "") -> str:
 
 
 # =============================================================================
-# 📋 REGISTRY ĐĂNG KÝ TOOL (100% MATCH VỚI SPEC MD)
+# 📋 REGISTRY ĐĂNG KÝ TOOL (100% MATCH VỚI SPEC MD).
 # =============================================================================
 AVAILABLE_TOOLS = {
     "suggest_level": suggest_level,
@@ -277,3 +277,4 @@ AVAILABLE_TOOLS = {
     "compare_courses": compare_courses,
     "calculate_price": calculate_price,
 }
+
