@@ -15,18 +15,98 @@
 
 ---
 
-## 🔍 2. SO SÁNH PHẢN HỒI (TEST CASE #3)
+## 🔍 2. SO SÁNH PHẢN HỒI
 
-**Câu hỏi**: *"Thời tiết ở Hà Nội hôm nay thế nào và tôi nên mặc gì đi chơi?"*
+**Test Case**
 
-### 🤖 Chatbot Baseline:
-* **Phản hồi**: *"Tôi không có truy cập Internet thời gian thực nên không biết thời tiết hôm nay ở Hà Nội."*
-* **Nhận xét**: An toàn nhưng không giải quyết được nhu cầu thực tế của người dùng.
+**Câu hỏi:**
 
-### 🧠 ReAct Agent:
-* **Thought 1**: Cần tra cứu thời tiết Hà Nội.
-* **Action 1**: `get_weather['Hà Nội']`
-* **Observation 1**: `Thời tiết Hà Nội: 28°C, Nắng nhẹ, Độ ẩm 65%.`
-* **Thought 2**: Đã có thông tin 28°C nắng nhẹ, đưa ra lời khuyên trang phục.
-* **Final Answer**: *"Thời tiết Hà Nội hôm nay 28°C, nắng nhẹ. Bạn nên mặc quần áo thoáng mát!"*
-* **Nhận xét**: Hoàn thành xuất sắc nhiệm vụ nhờ sự kết hợp giữa suy luận và công cụ.
+> "Em đang ở trình độ IELTS 5.0 và muốn đạt 6.5 trong 4 tháng. Trung tâm có khóa học nào phù hợp?"
+
+### 🤖 Chatbot Baseline
+
+**Phản hồi:**
+
+> Bạn có thể tham khảo khóa IELTS 6.5 hoặc liên hệ trung tâm để được tư vấn.
+
+**Nhận xét:**
+
+- Trả lời chung chung.
+- Không kiểm tra trình độ đầu vào.
+- Không tra cứu khóa học hoặc lịch khai giảng.
+
+---
+
+### 🧠 ReAct Agent
+
+**Thought 1**
+
+Xác định mục tiêu và trình độ hiện tại của học viên.
+
+**Action 1**
+
+`get_student_level()`
+
+**Observation 1**
+
+- Trình độ hiện tại: IELTS 5.0
+- Mục tiêu: IELTS 6.5
+- Thời gian mong muốn: 4 tháng
+
+---
+
+**Thought 2**
+
+Tra cứu các khóa IELTS phù hợp.
+
+**Action 2**
+
+`search_course("IELTS", level="5.0", target="6.5")`
+
+**Observation 2**
+
+Tìm thấy:
+
+- IELTS Intermediate (5.0 → 6.0)
+- IELTS Intensive 6.5 (6.0 → 6.5)
+
+---
+
+**Thought 3**
+
+Kiểm tra lịch khai giảng.
+
+**Action 3**
+
+`get_course_schedule()`
+
+**Observation 3**
+
+- IELTS Intermediate: Khai giảng 05/08
+- IELTS Intensive 6.5: Khai giảng 10/10
+
+---
+
+**Final Answer**
+
+Bạn nên đăng ký khóa IELTS Intermediate trước để nâng từ 5.0 lên khoảng 6.0, sau đó tiếp tục học IELTS Intensive 6.5 để đạt mục tiêu 6.5 trong khoảng 4 tháng nếu học đúng lộ trình.
+
+---
+
+## 📈 3. TRACE LOG
+
+| Bước | Thought | Action | Observation |
+|------|---------|--------|-------------|
+| 1 | Xác định trình độ học viên | `get_student_level()` | IELTS 5.0, mục tiêu 6.5 |
+| 2 | Tra cứu khóa học | `search_course()` | Tìm được các khóa phù hợp |
+| 3 | Tra cứu lịch khai giảng | `get_course_schedule()` | Lấy được thời gian khai giảng |
+| 4 | Đưa ra tư vấn | Final Answer | Đề xuất lộ trình học phù hợp |
+
+---
+
+## 📝 KẾT LUẬN
+
+- ReAct Agent tư vấn chính xác hơn Chatbot thông thường.
+- Có khả năng tra cứu khóa học, học phí và lịch khai giảng thông qua các công cụ.
+- Giải thích rõ quá trình suy luận (Thought → Action → Observation).
+- Phù hợp với bài toán **Trợ lý tư vấn khóa học IELTS & TOEIC**, giúp học viên chọn đúng khóa học theo trình độ và mục tiêu.
