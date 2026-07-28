@@ -185,13 +185,13 @@ def execute_tool(tool_name: str, args: list) -> str:
         return f"LỖI HỆ THỐNG khi chạy {tool_name}: {str(e)}"
 
 
-def run_baseline_chatbot(user_query: str, provider):
+def run_baseline_chatbot(user_query: str, provider) -> str:
     """Dựng Chatbot gốc (Baseline) không sử dụng Tool."""
     print(f"\n💬 [CHATBOT BASELINE] Câu hỏi: {user_query}")
-    print(f"⚙️ System Prompt: {CHATBOT_BASELINE_PROMPT.strip()}")
     
     response = provider.generate(user_query, system_prompt=CHATBOT_BASELINE_PROMPT)
     print(f"🤖 Chatbot trả lời:\n{response}\n")
+    return response
 
 
 def run_react_agent(user_query: str, provider):
@@ -217,7 +217,7 @@ def run_react_agent(user_query: str, provider):
         if "Final Answer:" in llm_response:
             final_answer = llm_response.split("Final Answer:")[-1].strip()
             print(f"\n🏁 [FINAL ANSWER]:\n{final_answer}")
-            return
+            return final_answer
             
         action_match = re.search(r"Action:\s*(.+)", llm_response)
         if action_match:
@@ -235,6 +235,7 @@ def run_react_agent(user_query: str, provider):
 
     if step >= MAX_ITERATIONS:
         print(f"\n🛡️ GUARDRAIL TRIGGERED: Đã đạt giới hạn tối đa {MAX_ITERATIONS} bước. Ngắt lặp an toàn!")
+        return "LỖI: Đã đạt giới hạn tối đa MAX_ITERATIONS"
 
 
 if __name__ == "__main__":
@@ -249,14 +250,56 @@ if __name__ == "__main__":
     tests = load_test_cases()
     print(f"✅ Đã tải thành công {len(tests)} Test Cases\n")
     
-    # Bạn có thể thay đổi vị trí index (0 đến 11) để chạy thử các test case khác nhau
-    sample_test = tests[10] # Chạy thử Test Case ID 4
-    sample_query = sample_test["question"]
+    choice = input("👉 Nhập ID Test Case muốn chạy (1-16) hoặc gõ 'all' để chạy toàn bộ và tóm tắt: ").strip().lower()
     
-    print(f"📌 Thực thi Test Case ID {sample_test.get('id')}: [{sample_test.get('category')}]")
-    
-    print("\n" + "="*20 + " DEMO 1: CHẠY TRÊN CHATBOT BASELINE " + "="*20)
-    run_baseline_chatbot(sample_query, provider)
-    
-    print("\n" + "="*20 + " DEMO 2: CHẠY TRÊN REACT AGENT " + "="*20)
-    run_react_agent(sample_query, provider)
+    if choice == 'all':
+        print("\n🚀 ĐANG CHẠY BATCH TEST TẤT CẢ CÁC KỊCH BẢN...\n")
+        results = []
+        for test in tests:
+            print(f"\n" + "="*50)
+            print(f"📌 Đang chạy Test Case ID {test['id']}: [{test['category']}]")
+            print(f"❓ Câu hỏi: {test['question']}")
+            
+            try:
+                base_ans = run_baseline_chatbot(test['question'], provider)
+            except Exception as e:
+                base_ans = f"Lỗi: {e}"
+                
+            try:
+                react_ans = run_react_agent(test['question'], provider)
+            except Exception as e:
+                react_ans = f"Lỗi: {e}"
+                
+            results.append({
+                "id": test["id"],
+                "category": test["category"],
+                "question": test["question"],
+                "baseline": base_ans,
+                "react": react_ans
+            })
+            
+        print("\n\n" + "🌟"*30)
+        print("📊 TÓM TẮT KẾT QUẢ CHẠY TOÀN BỘ TEST CASES")
+        print("🌟"*30)
+        for r in results:
+            print(f"\n[{r['id']}] {r['category']}")
+            print(f"   ❓ Câu hỏi: {r['question']}")
+            short_base = r['baseline'].replace('\n', ' ')[:100] + "..." if r['baseline'] else "N/A"
+            short_react = str(r['react']).replace('\n', ' ')[:100] + "..." if r['react'] else "N/A"
+            print(f"   🤖 Chatbot thường: {short_base}")
+            print(f"   🚀 ReAct Agent:    {short_react}")
+    else:
+        try:
+            test_id = int(choice)
+            sample_test = next((t for t in tests if t["id"] == test_id), tests[0])
+        except ValueError:
+            sample_test = tests[0]
+            
+        sample_query = sample_test["question"]
+        
+        print(f"\n📌 Thực thi Test Case ID {sample_test.get('id')}: [{sample_test.get('category')}]")
+        print("\n" + "="*20 + " DEMO 1: CHẠY TRÊN CHATBOT BASELINE " + "="*20)
+        run_baseline_chatbot(sample_query, provider)
+        
+        print("\n" + "="*20 + " DEMO 2: CHẠY TRÊN REACT AGENT " + "="*20)
+        run_react_agent(sample_query, provider)
