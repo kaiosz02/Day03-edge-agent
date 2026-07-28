@@ -1,0 +1,210 @@
+{
+  "courses": {
+    "IELTS_BEGIN": {
+      "course_id": "IELTS_BEGIN",
+      "exam_type": "IELTS",
+      "level": "Beginner",
+      "name": "IELTS Nền Tảng & Căn Bản (0.0 - 4.0)",
+      "price": 3500000,
+      "duration_weeks": 8,
+      "schedule": "Thứ 2 - 4 - 6 (18:00 - 20:00)",
+      "slots_available": 5,
+      "teacher": "ThS. Nguyễn Văn A (IELTS 8.5)",
+      "commitment": "Đầu ra Cam kết IELTS 4.0+",
+      "description": "Dành cho người mất gốc, củng cố toàn bộ ngữ pháp, từ vựng chuẩn Oxford và phát âm IPA."
+    },
+    "IELTS_INTER": {
+      "course_id": "IELTS_INTER",
+      "exam_type": "IELTS",
+      "level": "Intermediate",
+      "name": "IELTS Bứt Phá Mục Tiêu 5.5 (4.0 - 5.5)",
+      "price": 4500000,
+      "duration_weeks": 10,
+      "schedule": "Thứ 3 - 5 - 7 (18:00 - 20:00)",
+      "slots_available": 0,
+      "teacher": "Cô Trần Thị B (IELTS 8.0 - TESOL)",
+      "commitment": "Đầu ra Cam kết IELTS 5.5+",
+      "description": "Rèn luyện chuyên sâu 4 kỹ năng Nghe - Nói - Đọc - Viết cấp độ trung cấp, làm quen chiến thuật thi."
+    },
+    "IELTS_ADV": {
+      "course_id": "IELTS_ADV",
+      "exam_type": "IELTS",
+      "level": "Advanced",
+      "name": "IELTS Chinh Phục Band Cao (5.5 - 7.0+)",
+      "price": 5500000,
+      "duration_weeks": 10,
+      "schedule": "Thứ 7 - Chủ nhật (08:00 - 11:00)",
+      "slots_available": 3,
+      "teacher": "Thầy John Smith (Native Speaker - Ex-IELTS Examiner)",
+      "commitment": "Đầu ra Cam kết IELTS 7.0+",
+      "description": "Chiến thuật nâng Band thần tốc, tư duy phản biện Task 2 Writing và tự tin trả lời Part 3 Speaking."
+    },
+    "IELTS_INTENSIVE": {
+      "course_id": "IELTS_INTENSIVE",
+      "exam_type": "IELTS",
+      "level": "Advanced",
+      "name": "IELTS Cấp Tốc Du Học & Định Cư (6.0 - 7.5)",
+      "price": 7000000,
+      "duration_weeks": 6,
+      "schedule": "Thứ 2 đến Thứ 6 (14:00 - 17:00)",
+      "slots_available": 4,
+      "teacher": "Đội ngũ Chuyên gia Senior IELTS 8.5",
+      "commitment": "Đầu ra Cam kết IELTS 7.5+",
+      "description": "Lớp học cường độ cao 5 buổi/tuần, luyện thi áp lực phòng thi thật, chấm chữa bài 1-1 hàng ngày."
+    },
+    "IELTS_SPEAKING_WRITING": {
+      "course_id": "IELTS_SPEAKING_WRITING",
+      "exam_type": "IELTS",
+      "level": "Intermediate",
+      "name": "Chuyên Sâu IELTS Speaking & Writing (Chống Liệt)",
+      "price": 4000000,
+      "duration_weeks": 8,
+      "schedule": "Thứ 3 - Thứ 5 (19:30 - 21:30)",
+      "slots_available": 6,
+      "teacher": "Cô Minh Trang (IELTS 8.5 Speaking & Writing)",
+      "commitment": "Tăng tối thiểu 1.0 Band cho 2 kỹ năng đầu ra",
+      "description": "Khắc phục triệt để lỗi ngữ pháp, bí từ vựng, sửa bài viết Task 1 & 2 tỉ mỉ từng câu."
+    },
+    "TOEIC_BEGIN": {
+      "course_id": "TOEIC_BEGIN",
+      "exam_type": "TOEIC",
+      "level": "Beginner",
+      "name": "TOEIC Nền Tảng & Mất Gốc (0 - 350)",
+      "price": 3000000,
+      "duration_weeks": 6,
+      "schedule": "Thứ 2 - 4 - 6 (19:00 - 21:00)",
+      "slots_available": 8,
+      "teacher": "Thầy Lê Văn C (TOEIC 950)",
+      "commitment": "Đầu ra Cam kết TOEIC 350+",
+      "description": "Xây dựng lại nền tảng phát âm, từ vựng 600 từ TOEIC thiết yếu và mẹo làm Part 1, Part 2."
+    },
+    "TOEIC_INTER": {
+      "course_id": "TOEIC_INTER",
+      "exam_type": "TOEIC",
+      "level": "Intermediate",
+      "name": "TOEIC Mục Tiêu Ra Trường (350 - 650)",
+      "price": 4000000,
+      "duration_weeks": 8,
+      "schedule": "Thứ 3 - 5 - 7 (19:00 - 21:00)",
+      "slots_available": 4,
+      "teacher": "Cô Phạm Thị D (TOEIC 990)",
+      "commitment": "Đầu ra Cam kết TOEIC 650+",
+      "description": "Luyện đề TOEIC Part 1-7 chuyên sâu, chiến thuật quản lý thời gian và né bẫy đề thi."
+    },
+    "TOEIC_ADV": {
+      "course_id": "TOEIC_ADV",
+      "exam_type": "TOEIC",
+      "level": "Advanced",
+      "name": "TOEIC Đỉnh Cao Đạt Chuẩn Công Ty Đa Quốc Gia (650 - 900+)",
+      "price": 4800000,
+      "duration_weeks": 8,
+      "schedule": "Chủ nhật (08:00 - 12:00)",
+      "slots_available": 2,
+      "teacher": "Thầy Hoàng Anh (TOEIC 990 Absolute)",
+      "commitment": "Đầu ra Cam kết TOEIC 900+",
+      "description": "Luyện đề ETS mới nhất, chinh phục Part 7 bài đọc dài kép/ba và xử lý nhanh từ vựng chuyên ngành thương mại."
+    },
+    "TOEIC_4_SKILLS": {
+      "course_id": "TOEIC_4_SKILLS",
+      "exam_type": "TOEIC",
+      "level": "Intermediate",
+      "name": "TOEIC 4 Kỹ Năng Nghe - Nói - Đọc - Viết",
+      "price": 5200000,
+      "duration_weeks": 10,
+      "schedule": "Thứ 2 - Thứ 6 (18:30 - 20:30)",
+      "slots_available": 7,
+      "teacher": "Đội ngũ Giảng viên TOEIC Đa Quốc Gia",
+      "commitment": "Đầu ra TOEIC LR 700+ & SW 280+",
+      "description": "Khóa học toàn diện đáp ứng chuẩn giao tiếp công sở và yêu cầu tuyển dụng khắt khe của tập đoàn lớn."
+    },
+    "IELTS_ONLINE_1KEM1": {
+      "course_id": "IELTS_ONLINE_1KEM1",
+      "exam_type": "IELTS",
+      "level": "Intermediate",
+      "name": "IELTS Online 1 Kèm 1 Linh Hoạt (4.5 - 6.5)",
+      "price": 6500000,
+      "duration_weeks": 8,
+      "schedule": "Linh hoạt theo lịch học viên (Online 1-1)",
+      "slots_available": 10,
+      "teacher": "Đội ngũ Giảng viên IELTS 8.0+ Online",
+      "commitment": "Đầu ra Cam kết tăng tối thiểu 1.0 Band",
+      "description": "Học 1 kèm 1 online, giáo trình cá nhân hóa theo điểm yếu của từng học viên, lịch học tự chọn."
+    },
+    "IELTS_KIDS": {
+      "course_id": "IELTS_KIDS",
+      "exam_type": "IELTS",
+      "level": "Beginner",
+      "name": "IELTS Junior Cho Học Sinh THCS - THPT",
+      "price": 3800000,
+      "duration_weeks": 12,
+      "schedule": "Thứ 7 - Chủ nhật (14:00 - 16:00)",
+      "slots_available": 9,
+      "teacher": "Cô Đỗ Thu Hà (Chuyên luyện thi IELTS Junior)",
+      "commitment": "Làm quen cấu trúc đề thi và đạt nền tảng IELTS 4.0+",
+      "description": "Xây dựng nền tảng tiếng Anh học thuật sớm, phù hợp học sinh chuẩn bị du học hoặc thi chuyên."
+    },
+    "TOEIC_CAP_TOC": {
+      "course_id": "TOEIC_CAP_TOC",
+      "exam_type": "TOEIC",
+      "level": "Advanced",
+      "name": "TOEIC Cấp Tốc 2 Tuần (600 - 800+)",
+      "price": 3200000,
+      "duration_weeks": 2,
+      "schedule": "Thứ 2 đến Thứ 6 (18:00 - 21:00)",
+      "slots_available": 1,
+      "teacher": "Thầy Vũ Đình Long (TOEIC 985)",
+      "commitment": "Đầu ra Cam kết tăng tối thiểu 150 điểm",
+      "description": "Luyện thi cấp tốc trước kỳ thi, tập trung mẹo làm bài Part 5, 6, 7 và luyện đề sát giờ."
+    }
+  },
+  "alias_map": {
+    "IELTS-BEG-01": "IELTS_BEGIN",
+    "IELTS-INT-01": "IELTS_INTER",
+    "IELTS-ADV-01": "IELTS_ADV",
+    "IELTS_BEGINNER": "IELTS_BEGIN",
+    "IELTS_INTERMEDIATE": "IELTS_INTER",
+    "IELTS_ADVANCED": "IELTS_ADV",
+    "TOEIC-BEG-01": "TOEIC_BEGIN",
+    "TOEIC-INT-01": "TOEIC_INTER",
+    "TOEIC-ADV-01": "TOEIC_ADV",
+    "TOEIC_BEGINNER": "TOEIC_BEGIN",
+    "TOEIC_INTERMEDIATE": "TOEIC_INTER",
+    "TOEIC_ADVANCED": "TOEIC_ADV",
+    "IELTS-ONLINE-01": "IELTS_ONLINE_1KEM1",
+    "IELTS_ONLINE": "IELTS_ONLINE_1KEM1",
+    "IELTS-KIDS-01": "IELTS_KIDS",
+    "IELTS_JUNIOR": "IELTS_KIDS",
+    "TOEIC-CAPTOC-01": "TOEIC_CAP_TOC",
+    "TOEIC_INTENSIVE": "TOEIC_CAP_TOC"
+  },
+  "promo_codes": {
+    "SV2026": {
+      "discount_percent": 15,
+      "description": "Ưu đãi Học sinh - Sinh viên 2026 (-15%)"
+    },
+    "SUMMER10": {
+      "discount_percent": 10,
+      "description": "Khuyến mãi Chào Hè Rực Rỡ (-10%)"
+    },
+    "EARLYBIRD": {
+      "discount_percent": 20,
+      "description": "Ưu đãi Đăng ký sớm trước 15 ngày khai giảng (-20%)"
+    },
+    "COMBO20": {
+      "discount_percent": 20,
+      "description": "Ưu đãi Đăng ký Combo 2 khóa học (-20%)"
+    },
+    "STUDENT2026": {
+      "discount_percent": 12,
+      "description": "Ưu đãi Thẻ Sinh Viên Toàn Quốc (-12%)"
+    },
+    "REFER15": {
+      "discount_percent": 15,
+      "description": "Ưu đãi Giới Thiệu Bạn Bè (-15%)"
+    },
+    "NEWYEAR25": {
+      "discount_percent": 25,
+      "description": "Khuyến Mãi Tân Niên (-25%, áp dụng có thời hạn)"
+    }
+  }
+}
