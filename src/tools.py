@@ -3,116 +3,30 @@
 🛠️ TOOL REGISTRY & SCHEMAS (Dành cho Role 2: Tool & Spec Engineer)
 Chủ đề: Trợ Lý Tư Vấn Khóa Học Tiếng Anh (IELTS & TOEIC)
 File code được chuẩn hóa chính xác theo spec trong docs/role2_tools_spec.md
+Dữ liệu mock được đọc trực tiếp từ config/mock_data.json.
 """
 
+import json
+import os
+
 # =============================================================================
-# 📚 DỮ LIỆU KHÓA HỌC MẪU (MOCK DATABASE)
+# 📂 NẠP DỮ LIỆU MOCK TỪ config/mock_data.json
 # =============================================================================
-COURSES_DB = {
-    "IELTS_BEGIN": {
-        "course_id": "IELTS_BEGIN",
-        "exam_type": "IELTS",
-        "level": "Beginner",
-        "name": "IELTS Nền Tảng (0.0 - 4.0)",
-        "price": 3500000,
-        "duration_weeks": 8,
-        "schedule": "Thứ 2 - 4 - 6 (18:00 - 20:00)",
-        "slots_available": 5,
-        "teacher": "ThS. Nguyễn Văn A (IELTS 8.5)",
-        "commitment": "Đầu ra Cam kết IELTS 4.0+",
-        "description": "Dành cho người mất gốc, củng cố ngữ pháp, từ vựng và phát âm chuẩn."
-    },
-    "IELTS_INTER": {
-        "course_id": "IELTS_INTER",
-        "exam_type": "IELTS",
-        "level": "Intermediate",
-        "name": "IELTS Bứt Phá (4.0 - 5.5)",
-        "price": 4500000,
-        "duration_weeks": 10,
-        "schedule": "Thứ 3 - 5 - 7 (18:00 - 20:00)",
-        "slots_available": 0,
-        "teacher": "Cô Trần Thị B (IELTS 8.0)",
-        "commitment": "Đầu ra Cam kết IELTS 5.5+",
-        "description": "Luyện kỹ năng làm bài 4 kỹ năng Nghe - Nói - Đọc - Viết cấp độ trung cấp."
-    },
-    "IELTS_ADV": {
-        "course_id": "IELTS_ADV",
-        "exam_type": "IELTS",
-        "level": "Advanced",
-        "name": "IELTS Chinh Phục (5.5 - 7.0+)",
-        "price": 5500000,
-        "duration_weeks": 10,
-        "schedule": "Thứ 7 - Chủ nhật (08:00 - 11:00)",
-        "slots_available": 3,
-        "teacher": "Thầy John Smith (Native Speaker)",
-        "commitment": "Đầu ra Cam kết IELTS 7.0+",
-        "description": "Chiến thuật nâng Band điểm thần tốc, sửa bài Writing/Speaking 1-1."
-    },
-    "TOEIC_BEGIN": {
-        "course_id": "TOEIC_BEGIN",
-        "exam_type": "TOEIC",
-        "level": "Beginner",
-        "name": "TOEIC Cơ Bản (0 - 350)",
-        "price": 3000000,
-        "duration_weeks": 6,
-        "schedule": "Thứ 2 - 4 - 6 (19:00 - 21:00)",
-        "slots_available": 8,
-        "teacher": "Thầy Lê Văn C (TOEIC 950)",
-        "commitment": "Đầu ra Cam kết TOEIC 350+",
-        "description": "Xây dựng nền tảng từ vựng TOEIC căn bản và ngữ pháp bắt buộc."
-    },
-    "TOEIC_INTER": {
-        "course_id": "TOEIC_INTER",
-        "exam_type": "TOEIC",
-        "level": "Intermediate",
-        "name": "TOEIC Mục Tiêu 650 (350 - 650)",
-        "price": 4000000,
-        "duration_weeks": 8,
-        "schedule": "Thứ 3 - 5 - 7 (19:00 - 21:00)",
-        "slots_available": 4,
-        "teacher": "Cô Phạm Thị D (TOEIC 990)",
-        "commitment": "Đầu ra Cam kết TOEIC 650+",
-        "description": "Luyện đề TOEIC Part 1-7, mẹo tránh bẫy câu hỏi đọc và nghe."
-    },
-    "TOEIC_ADV": {
-        "course_id": "TOEIC_ADV",
-        "exam_type": "TOEIC",
-        "level": "Advanced",
-        "name": "TOEIC Nâng Cao (650 - 900+)",
-        "price": 4800000,
-        "duration_weeks": 8,
-        "schedule": "Chủ nhật (08:00 - 12:00)",
-        "slots_available": 2,
-        "teacher": "Thầy Hoàng Anh (TOEIC 990)",
-        "commitment": "Đầu ra Cam kết TOEIC 900+",
-        "description": "Luyện đề cường độ cao, chiến thuật làm bài Part 7 đọc hiểu dài."
-    }
-}
+_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "mock_data.json")
 
-# Alias mapping cho các mã cũ nếu có (ví dụ: 'IELTS-INT-01' -> 'IELTS_INTER')
-ALIAS_MAP = {
-    "IELTS-BEG-01": "IELTS_BEGIN",
-    "IELTS-INT-01": "IELTS_INTER",
-    "IELTS-ADV-01": "IELTS_ADV",
-    "TOEIC-BEG-01": "TOEIC_BEGIN",
-    "TOEIC-INT-01": "TOEIC_INTER",
-    "TOEIC-ADV-01": "TOEIC_ADV",
-}
+with open(_DATA_PATH, "r", encoding="utf-8") as _f:
+    _MOCK_DATA = json.load(_f)
 
-# Mã giảm giá giả lập
-PROMO_CODES = {
-    "SV2026": {"discount_percent": 15, "description": "Ưu đãi Sinh viên 2026 (-15%)"},
-    "SUMMER10": {"discount_percent": 10, "description": "Ưu đãi Chào Hè (-10%)"},
-}
+COURSES_DB = _MOCK_DATA["courses"]
+ALIAS_MAP = _MOCK_DATA.get("alias_map", {})
+PROMO_CODES = _MOCK_DATA.get("promo_codes", {})
 
 
-def _get_course(course_id: str):
-    """Helper lấy course từ ID hoặc Alias"""
-    if not course_id:
-        return None
-    cid_upper = course_id.strip().upper()
-    real_id = ALIAS_MAP.get(cid_upper, cid_upper)
-    return COURSES_DB.get(real_id)
+def get_course_by_id(course_id: str):
+    """Tra cứu khóa học theo mã, hỗ trợ cả các mã alias trong ALIAS_MAP."""
+    cid = str(course_id).strip().upper()
+    cid = ALIAS_MAP.get(cid, cid)
+    return COURSES_DB.get(cid)
 
 
 # =============================================================================
@@ -145,25 +59,25 @@ def suggest_level(exam_type: str, current_score: str) -> str:
                 return f"LỖI: Điểm IELTS '{score}' không hợp lệ (phải từ 0.0 đến 9.0)."
             if score < 4.0:
                 level = "Beginner"
-                suggested_course = "IELTS_BEGIN (IELTS Nền Tảng)"
+                suggested_course = "IELTS_BEGIN (IELTS Nền Tảng & Căn Bản)"
             elif score < 5.5:
                 level = "Intermediate"
-                suggested_course = "IELTS_INTER (IELTS Bứt Phá)"
+                suggested_course = "IELTS_INTER (IELTS Bứt Phá Mục Tiêu 5.5)"
             else:
                 level = "Advanced"
-                suggested_course = "IELTS_ADV (IELTS Chinh Phục)"
+                suggested_course = "IELTS_ADV (IELTS Chinh Phục Band Cao)"
         else:  # TOEIC
             if not (0 <= score <= 990):
                 return f"LỖI: Điểm TOEIC '{score}' không hợp lệ (phải từ 0 đến 990)."
             if score < 350:
                 level = "Beginner"
-                suggested_course = "TOEIC_BEGIN (TOEIC Cơ Bản)"
+                suggested_course = "TOEIC_BEGIN (TOEIC Nền Tảng & Mất Gốc)"
             elif score < 650:
                 level = "Intermediate"
-                suggested_course = "TOEIC_INTER (TOEIC Mục Tiêu 650)"
+                suggested_course = "TOEIC_INTER (TOEIC Mục Tiêu Ra Trường)"
             else:
                 level = "Advanced"
-                suggested_course = "TOEIC_ADV (TOEIC Nâng Cao)"
+                suggested_course = "TOEIC_ADV (TOEIC Đỉnh Cao Đạt Chuẩn)"
 
         return (
             f"🎯 Dựa trên điểm {exam_norm} hiện tại là {score}, cấp độ phù hợp của bạn là: **{level}**.\n"
@@ -190,7 +104,6 @@ def search_courses(query: str, level: str = "") -> str:
 
         matched = []
         for cid, info in COURSES_DB.items():
-            # Check match query trong ID, exam_type, name, schedule, description
             text_corpus = f"{cid} {info['exam_type']} {info['name']} {info['schedule']} {info['description']}".lower()
             
             match_query = (q_lower in text_corpus)
@@ -218,7 +131,7 @@ def get_course_detail(course_id: str) -> str:
         str: Chi tiết tên khóa, giá gốc, thời lượng, giảng viên, đầu ra cam kết.
     """
     try:
-        course = _get_course(course_id)
+        course = get_course_by_id(course_id)
         if not course:
             return f"LỖI: Không tồn tại mã khóa học '{course_id}' trong hệ thống"
 
@@ -247,7 +160,7 @@ def check_schedule(course_id: str) -> str:
         str: Lịch học (thứ, giờ) và số ghế trống còn lại.
     """
     try:
-        course = _get_course(course_id)
+        course = get_course_by_id(course_id)
         if not course:
             return f"LỖI: Không tìm thấy lịch học cho mã khóa '{course_id}'"
 
@@ -274,7 +187,6 @@ def compare_courses(course_ids_str: str) -> str:
         str: Bảng hoặc danh sách so sánh đối chiếu giữa các khóa.
     """
     try:
-        # Hỗ trợ truyền dạng chuỗi 'IELTS_BEGIN, IELTS_INTER' hoặc list
         if isinstance(course_ids_str, list):
             raw_ids = course_ids_str
         else:
@@ -287,7 +199,7 @@ def compare_courses(course_ids_str: str) -> str:
 
         courses = []
         for cid in cids:
-            course = _get_course(cid)
+            course = get_course_by_id(cid)
             if not course:
                 return f"LỖI: Không tồn tại mã khóa học '{cid}' trong hệ thống"
             courses.append(course)
@@ -318,7 +230,7 @@ def calculate_price(course_id: str, promo_code: str = "") -> str:
         str: Học phí gốc, số tiền được giảm và tổng chi phí thanh toán cuối cùng.
     """
     try:
-        course = _get_course(course_id)
+        course = get_course_by_id(course_id)
         if not course:
             return f"LỖI: Không tồn tại mã khóa học '{course_id}' trong hệ thống"
 
