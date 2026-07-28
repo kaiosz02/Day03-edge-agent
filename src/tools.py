@@ -1,3 +1,4 @@
+
 """
 🛠️ TOOL REGISTRY & SCHEMAS (Dành cho Role 2: Tool & Spec Engineer)
 Chủ đề: Trợ Lý Tư Vấn Khóa Học Tiếng Anh (IELTS & TOEIC)
