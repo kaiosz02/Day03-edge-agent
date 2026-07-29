@@ -141,19 +141,19 @@ KẾT QUẢ: Tuân theo lời khuyên thiếu căn cứ khoa học → nguy hi�
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    AI AGENT ORCHESTRATION (LangGraph)            │
-│                                                                   │
+│                    AI AGENT ORCHESTRATION (LangGraph)           │
+│                                                                 │
 │  [User Input] → [Intent Router] → [Tool Selector] → [Response]  │
-│                                                                   │
-│  Tools:                                                           │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │
-│  │  RAG DB  │ │ Meal     │ │ Food Log │ │ Drug-Food│           │
-│  │  (VN food│ │ Planner  │ │ Tracker  │ │ Interact │           │
-│  │  CSDL)   │ │ Tool     │ │ Tool     │ │ Checker  │           │
-│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │
-│                                                                   │
+│                                                                 │
+│  Tools:                                                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐            │
+│  │  RAG DB  │ │ Meal     │ │ Food Log │ │ Drug-Food│            │
+│  │  (VN food│ │ Planner  │ │ Tracker  │ │ Interact │            │
+│  │  CSDL)   │ │ Tool     │ │ Tool     │ │ Checker  │            │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘            │
+│                                                                 │
 │  Guardrails: Chống hallucinate số | Kiểm chỉ định y khoa        │
-│  Memory: Hồ sơ bệnh nhân + lịch sử ăn uống                     │
+│  Memory: Hồ sơ bệnh nhân + lịch sử ăn uống                      │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
